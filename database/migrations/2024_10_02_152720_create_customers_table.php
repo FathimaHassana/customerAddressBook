@@ -20,7 +20,8 @@ class CreateCustomersTable extends Migration
             $table->string('phoneNumber');
             $table->string('email');
             $table->string('country');
-            $table->string('status');
+            $table->enum('status', ['active', 'inactive'])->nullable();
+            $table->string('password');
             $table->timestamps();
         });
     }

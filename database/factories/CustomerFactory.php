@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class CustomerFactory extends Factory
 {
@@ -14,7 +15,13 @@ class CustomerFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'company' => $this->faker->company(),
+            'phoneNumber' => $this->faker->phoneNumber(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'country' => $this->faker->country(),
+            'status' => 'active',
+           'password'=>$this->faker->password
         ];
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [AuthController::class, 'index']);
+
+
+Route::get('dashboard', [AuthController::class, 'dashboard']);
+Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom');
+Route::get('registration', [AuthController::class, 'registration'])->name('register-user');
+Route::post('custom-registration', [AuthController::class, 'customRegistration'])->name('register.custom');
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+
+Route::get('/search', '\App\Http\Controllers\CustomerController@search');
+
+
+Route::resource('customers', \App\Http\Controllers\CustomerController::class);
+
+

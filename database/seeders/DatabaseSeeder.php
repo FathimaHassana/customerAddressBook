@@ -1,7 +1,7 @@
 <?php
-
 namespace Database\Seeders;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +13,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([UsersTableSeeder::class]);
+        $this->call([CustomersTableSeeder::class]);
+
+        DB::table('customers')->insert([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'phoneNumber' => '123456789',
+            'country' => 'Sri Lanka',
+            'company' => 'Saltside',
+            'password' => 'secret',
+            'status' => 'inactive'
+
+        ]);
     }
 }

@@ -76,14 +76,32 @@
         <div class="input-group">
             <div class="form-group">
                 <form action="/search" method="get">
-                    <input class="form-control" name="search" placeholder="Search...">
                     <button type="submit">Search</button>
+                    <input class="form-control" name="search" placeholder="Search..." style="color: black">
                 </form>
             </div>
 
-            <div class="my-5">
-                <a href="/customers/create" class="btn btn-primary">Create Customer</a>
+            <style>
+                .container {
+                    height: 50px;
+                    position: relative;
+                }
+
+                .vertical-center {
+                    margin: 0;
+                    position: absolute;
+                    top: 50%;
+                    -ms-transform: translateY(-50%);
+                    transform: translateY(-50%);
+                }
+            </style>
+
+            <div class="container">
+                <div class="vertical-center">
+                    <a href="/customers/create" class="btn btn-primary">Create Customer</a>
+                </div>
             </div>
+
 
             <table class="table table-striped">
                 <thead>
@@ -105,7 +123,8 @@
                             <td><b style="color: black">{{$customer->email}}</td>
                             <td><b style="color: black">{{$customer->country}}</td>
                             <td><b style="color: black">{{$customer->status}}</td>
-                            <td><a href="{{ route('customers.edit', $customer->id)}}" class="btn btn-primary">Edit</a></td>
+                            <td><a href="{{ route('customers.edit', $customer->id)}}" class="btn btn-primary">Edit</a>
+                            </td>
                             <td>
                                 <form action="{{ route('customers.destroy', $customer->id)}}" method="post">
                                     @csrf
@@ -125,6 +144,8 @@
         </div>
 
     </div>
+
+    {{$customers->links()}}
 
 @endsection
 

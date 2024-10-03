@@ -4,7 +4,6 @@
 
 @section('content')
     <div class="card uper">
-            <b>Add Customer Data</b>
         <div class="card-body">
             @if ($errors->any())
                 <div class="alert alert-danger">

@@ -1,105 +1,53 @@
-@extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'register', 'title' => __('Material Dashboard')])
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-@section('content')
-<div class="container" style="height: auto;">
-  <div class="row align-items-center">
-    <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
-      <form class="form" method="POST" action="{{ route('register') }}">
-        @csrf
+<main class="signup-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <h3 class="card-header text-center">Register User</h3>
+                    <div class="card-body">
 
-        <div class="card card-login card-hidden mb-3">
-          <div class="card-header card-header-primary text-center">
-            <h4 class="card-title"><strong>{{ __('Register') }}</strong></h4>
-            <div class="social-line">
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                <i class="fa fa-facebook-square"></i>
-              </a>
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                <i class="fa fa-twitter"></i>
-              </a>
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                <i class="fa fa-google-plus"></i>
-              </a>
+                        <form action="{{ route('register.custom') }}" method="POST">
+                            @csrf
+                            <div class="form-group mb-3">
+                                <input type="text" placeholder="Name" id="name" class="form-control" name="name"
+                                       required autofocus>
+                                @if ($errors->has('name'))
+                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                @endif
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <input type="text" placeholder="Email" id="email_address" class="form-control"
+                                       name="email" required autofocus>
+                                @if ($errors->has('email'))
+                                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                                @endif
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <input type="password" placeholder="Password" id="password" class="form-control"
+                                       name="password" required>
+                                @if ($errors->has('password'))
+                                    <span class="text-danger">{{ $errors->first('password') }}</span>
+                                @endif
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" name="remember"> Remember Me</label>
+                                </div>
+                            </div>
+
+                            <div class="d-grid mx-auto">
+                                <button type="submit" class="btn btn-dark btn-block">Sign up</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="card-body ">
-            <p class="card-description text-center">{{ __('Or Be Classical') }}</p>
-            <div class="bmd-form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                      <i class="material-icons">face</i>
-                  </span>
-                </div>
-                <input type="text" name="name" class="form-control" placeholder="{{ __('Name...') }}" value="{{ old('name') }}" required>
-              </div>
-              @if ($errors->has('name'))
-                <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
-                  <strong>{{ $errors->first('name') }}</strong>
-                </div>
-              @endif
-            </div>
-            <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }} mt-3">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons">email</i>
-                  </span>
-                </div>
-                <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}" value="{{ old('email') }}" required>
-              </div>
-              @if ($errors->has('email'))
-                <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
-                  <strong>{{ $errors->first('email') }}</strong>
-                </div>
-              @endif
-            </div>
-            <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons">lock_outline</i>
-                  </span>
-                </div>
-                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password...') }}" required>
-              </div>
-              @if ($errors->has('password'))
-                <div id="password-error" class="error text-danger pl-3" for="password" style="display: block;">
-                  <strong>{{ $errors->first('password') }}</strong>
-                </div>
-              @endif
-            </div>
-            <div class="bmd-form-group{{ $errors->has('password_confirmation') ? ' has-danger' : '' }} mt-3">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons">lock_outline</i>
-                  </span>
-                </div>
-                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('Confirm Password...') }}" required>
-              </div>
-              @if ($errors->has('password_confirmation'))
-                <div id="password_confirmation-error" class="error text-danger pl-3" for="password_confirmation" style="display: block;">
-                  <strong>{{ $errors->first('password_confirmation') }}</strong>
-                </div>
-              @endif
-            </div>
-            <div class="form-check mr-auto ml-3 mt-3">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" id="policy" name="policy" {{ old('policy', 1) ? 'checked' : '' }} >
-                <span class="form-check-sign">
-                  <span class="check"></span>
-                </span>
-                {{ __('I agree with the ') }} <a href="#">{{ __('Privacy Policy') }}</a>
-              </label>
-            </div>
-          </div>
-          <div class="card-footer justify-content-center">
-            <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Create account') }}</button>
-          </div>
         </div>
-      </form>
     </div>
-  </div>
-</div>
-@endsection
+</main>

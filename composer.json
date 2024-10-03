@@ -6,11 +6,17 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "blade-ui-kit/blade-heroicons": "^0.3.1",
+        "blade-ui-kit/blade-icons": "^0.5.1",
+        "blade-ui-kit/blade-ui-kit": "^0.2.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "laravel-frontend-presets/material-dashboard": "^1.1",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "laravel/ui": "^3.4",
+        "livewire/livewire": "^2.12"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
