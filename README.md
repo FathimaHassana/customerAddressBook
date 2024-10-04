@@ -18,4 +18,5 @@ email: admin@material.com
 password: secret
 
 Step05:Navigate to customer page and check the create,edit and delete button functionality
+
 Step06: Search the list with customer name and press search button
