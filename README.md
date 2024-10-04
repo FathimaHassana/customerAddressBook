@@ -8,10 +8,14 @@
 </p>
 
 Step 01: Clone the project
+
 Step02:  Set the environment variable and database creation and run composer update
+
 Step 03: Run migration,factory,seeders
-Step04: Run the project and go to login page
+
+Step04: Run the project and go to the login page.Use below credential to login the page
 email: admin@material.com
 password: secret
+
 Step05:Navigate to customer page and check the create,edit and delete button functionality
 Step06: Search the list with customer name and press search button
