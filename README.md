@@ -7,11 +7,12 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-Step 01: Clone the project
+Step 01: Clone the project (git clone https://github.com/FathimaHassana/customerAddressBook.git)
 
 Step02:  Set the environment variable and database creation and run composer update
 
-Step 03: Run migration,factory,seeders
+Step 03: Run migration,factory,seeders(php artisan migrate:refresh --seed)
+
 
 Step04: Run the project and go to the login page.Use below credential to login the page
 email: admin@material.com
